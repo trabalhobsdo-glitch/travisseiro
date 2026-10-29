@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ff6a00">
+<meta name="robots" content="noindex">
+<title>Finalizar compra | Auriva</title>
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+<div class="ck-bar">Compre com segurança</div>
+<header class="ck-top"><div class="w">
+  <a href="index.html" aria-label="Voltar à loja"><img src="images/auriva-logo.png" alt="Auriva" width="180" height="60"></a>
+  <div class="ck-sec"><span class="i" data-i="lock" data-s="28"></span><span><b>Pagamento</b>100% seguro</span></div>
+</div></header>
+
+<main class="ck">
+<div class="stp" aria-label="Etapas">
+  <div class="on" id="s1"><i><span class="i" data-i="truck" data-s="24"></span></i>Entrega</div>
+  <div id="s2"><i><span class="i" data-i="user" data-s="24"></span></i>Informações pessoais</div>
+  <div id="s3"><i><span class="i" data-i="card" data-s="24"></span></i>Pagamento</div>
+</div>
+
+<div class="lay">
+  <div class="main-col">
+    <div id="flow">
+    <section class="card sel">
+      <h2 class="ttl"><b>1</b>Entrega</h2>
+      <p class="sub">Informe seu CEP para ver as opções de frete.</p>
+      <label for="cep" style="font-size:13px;font-weight:700">CEP</label>
+      <div class="cep"><input id="cep" inputmode="numeric" maxlength="9" placeholder="00000-000" autocomplete="postal-code"></div>
+      <div id="cepMsg" aria-live="polite"></div>
+      <div id="opts" class="pm" hidden>
+        <label><input type="radio" name="frete" value="pac" checked><span class="i" data-i="truck" data-s="26"></span><span>PAC<small id="pacTxt">Entrega econômica</small></span><b class="ok" style="margin-left:auto">Grátis</b></label>
+        <label><input type="radio" name="frete" value="sedex"><span class="i" data-i="truck" data-s="26"></span><span>SEDEX<small id="sedexTxt">Entrega mais rápida</small></span><b id="sedexPreco" style="margin-left:auto"></b></label>
+      </div>
+    </section>
+
+    <section class="card" id="dados" hidden>
+      <h2 class="ttl"><b>2</b>Seus dados</h2>
+      <p class="sub">Para emitir o pedido e entregar no seu endereço.</p>
+      <div class="f">
+        <label class="s6">Nome completo<input id="nome" autocomplete="name" placeholder="Como está no documento"><span class="err">Informe nome e sobrenome.</span></label>
+        <label class="s3">E-mail<input id="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com"><span class="err">E-mail inválido.</span></label>
+        <label class="s3">Celular (WhatsApp)<input id="tel" inputmode="tel" autocomplete="tel-national" placeholder="(00) 00000-0000"><span class="err">Informe DDD + número.</span></label>
+        <label class="s3">CPF<input id="cpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00"><span class="err">CPF inválido.</span></label>
+      </div>
+      <div class="sec2">Endereço de entrega</div>
+      <div class="f">
+        <label class="s4">Rua / Avenida<input id="rua" autocomplete="address-line1"><span class="err">Informe a rua.</span></label>
+        <label class="s2">Número<input id="num" autocomplete="address-line2" inputmode="numeric"><span class="err">Informe o número.</span></label>
+        <label class="s3">Complemento <span style="font-weight:500;color:var(--mut)">(opcional)</span><input id="comp"></label>
+        <label class="s3">Bairro<input id="bairro"><span class="err">Informe o bairro.</span></label>
+        <label class="s4">Cidade<input id="cidade" autocomplete="address-level2"><span class="err">Informe a cidade.</span></label>
+        <label class="s2">UF<input id="uf" maxlength="2" autocomplete="address-level1" style="text-transform:uppercase"><span class="err">UF inválida.</span></label>
+      </div>
+    </section>
+
+    <section class="card" id="pagto" hidden>
+      <h2 class="ttl"><b>3</b>Pagamento</h2>
+      <p class="sub">Escolha como pagar. Tudo acontece aqui, sem sair do site.</p>
+      <div class="tabs">
+        <label><input type="radio" name="metodo" value="pix" checked><span class="i" data-i="pix"></span>Pix<em>Imediato</em></label>
+        <label><input type="radio" name="metodo" value="credit_card"><span class="i" data-i="card"></span>Cartão</label>
+      </div>
+      <div id="pnPix" class="panel"><p>Ao confirmar, mostramos o <b>QR Code</b> e o código <b>copia e cola</b> aqui mesmo. A aprovação é imediata.</p></div>
+      <div id="pnCard" class="panel" hidden>
+        <div class="f" id="card-fields">
+          <label class="s6">Número do cartão<input id="cnum" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="23"></label>
+          <label class="s6">Nome impresso no cartão<input id="cnome" autocomplete="cc-name" placeholder="COMO ESTÁ NO CARTÃO" style="text-transform:uppercase"></label>
+          <label class="s3">Validade<input id="cval" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA" maxlength="5"></label>
+          <label class="s3">CVV<input id="ccvv" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4"></label>
+        </div>
+        <div id="parcWrap" hidden style="margin-top:10px"><label style="font-size:13px;font-weight:700">Parcelas<select id="parcSel"></select></label></div>
+        <div class="cerr" id="cardErr" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <p id="erro" role="alert" style="color:var(--bad);font-weight:700;font-size:14px;min-height:20px;margin:0 0 8px"></p>
+    <button class="btn" id="fin" type="button" hidden><span class="i" data-i="lock" data-s="22"></span><span id="finTxt">Pagar</span></button>
+    </div>
+
+    <section class="card pixbox" id="pixBox" hidden>
+      <h2 class="ttl"><b>3</b>Pague com Pix</h2>
+      <p class="sub">Abra o app do seu banco, escolha Pix e escaneie o QR Code ou use o copia e cola.</p>
+      <div class="qr" id="qr"></div>
+      <div class="code" id="pixCode"></div>
+      <button class="btn" id="copiar" type="button">Copiar código Pix</button>
+      <div class="wait"><span class="dot"></span><span id="pixSt">Aguardando pagamento…</span></div>
+      <small id="pixExp" style="color:var(--mut)"></small><br>
+      <button class="lnk" id="voltar" type="button">Voltar e alterar dados ou forma de pagamento</button>
+    </section>
+
+    <section class="card done" id="done" hidden>
+      <div style="color:var(--ok)"><span class="i" data-i="check" data-s="64"></span></div>
+      <h2 class="ttl" id="doneT">Pedido confirmado!</h2>
+      <p class="sub" id="doneP"></p>
+      <div class="ref" id="doneRef"></div>
+      <a class="ghost2" href="index.html" style="margin-top:14px">Voltar à loja</a>
+    </section>
+
+    <a class="btn wa" id="wa" hidden target="_blank" rel="noopener">Falar com a gente no WhatsApp</a>
+    <div class="mini"><span><span class="i" data-i="lock" data-s="16"></span>Compra segura</span><span><span class="i" data-i="truck" data-s="16"></span>Frete grátis no PAC</span><span><span class="i" data-i="shield" data-s="16"></span>Dados protegidos</span></div>
+  </div>
+
+  <aside class="side">
+    <section class="card">
+      <details open>
+        <summary><span>Resumo (<span id="rc">1</span>)</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></summary>
+        <div class="prod">
+          <img id="pimg" src="images/produto-8.webp" alt="Travesseiro Cervical Auriva" width="76" height="76">
+          <div style="flex:1">
+            <div class="nm" id="pnome"></div>
+            <span class="pill">Frete grátis no PAC</span>
+          </div>
+        </div>
+
+        <div class="kits" role="radiogroup" aria-label="Escolha o kit">
+          <label><input type="radio" name="kit" value="1"><span>1 travesseiro</span><b id="k1"></b></label>
+          <label><input type="radio" name="kit" value="2"><span>2 travesseiros</span><b id="k2"></b></label>
+          <label><input type="radio" name="kit" value="3"><span>3 travesseiros<em>Menor preço por unidade</em></span><b id="k3"></b></label>
+        </div>
+
+        <div class="cupom">
+          <label for="cupomIn">Cupom de desconto</label>
+          <div class="cep"><input id="cupomIn" placeholder="Digite seu cupom" autocapitalize="characters" autocomplete="off" style="text-transform:uppercase"><button type="button" id="cupomBtn">Aplicar</button></div>
+          <div id="cupomMsg" aria-live="polite"></div>
+        </div>
+
+        <div class="tots">
+          <div class="row"><span id="resumo">Produtos</span><span id="sub">—</span></div>
+          <div class="row" id="descRow" hidden><span id="descNome">Cupom</span><span id="descVal" class="ok"></span></div>
+          <div class="row"><span id="fnome">Frete</span><span id="fval" class="ok">Grátis</span></div>
+          <div class="big"><span>Total</span><div><strong id="tot"></strong><small id="parc"></small></div></div>
+        </div>
+      </details>
+    </section>
+  </aside>
+</div>
+</main>
+
+<script src="js/icons.js"></script>
+<script src="js/config.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://js.fastsoftbrasil.com/security.js"></script>
+<script src="js/pedido.js"></script>
+</body>
+</html>
